@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class difficulty : MonoBehaviour
 {
+    public int DifficultyAmount;
     private Button _button;
     private GameManager _gameManager;
 
@@ -24,6 +25,7 @@ public class difficulty : MonoBehaviour
 
     private void SetDifficulty()
     {
-        Debug.Log(gameObject.name + "was clicked");
+        //Debug.Log(gameObject.name + "was clicked");
+        _gameManager.StartGame();
     }
 }

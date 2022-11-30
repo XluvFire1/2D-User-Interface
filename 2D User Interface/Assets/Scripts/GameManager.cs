@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
 {
     public bool IsGameActive;
     public int Score = 0;
+    public float SpawnRate = 1f;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI GameOverText;
-    public TextMeshProUGUI GameTitleText;
-    public Button StartButton;
+    //public TextMeshProUGUI GameTitleText;
+    //public Button StartButton;
+    public GameObject StartScene;
     public Button RestartButton;
     public List<GameObject> Target;
 
@@ -24,8 +26,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        GameTitleText.gameObject.SetActive(false);
-        StartButton.gameObject.SetActive(false);
+        //GameTitleText.gameObject.SetActive(false);
+        //StartButton.gameObject.SetActive(false);
+        StartScene.gameObject.SetActive(false);
         ScoreText.gameObject.SetActive(true);
         IsGameActive = true;
         ScoreText.text = "Score: " + Score;
@@ -54,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         while(IsGameActive)
         {
+        yield return new WaitForSeconds(SpawnRate);
         yield return new WaitForSeconds(1);
         int index = Random.Range(0, Target.Count);
         Instantiate(Target[index]);
